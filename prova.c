@@ -1,31 +1,40 @@
-#include <stdio.h>
-#define LENGTH 4
 
-void scambio(int *x,int *y){
-	int tmp=*x;
-	*x=*y;
-	*y=tmp;
-}
-
-void stampaArray(int v[],int dimensione){
-	int i;
-	for(i=0;i<dimensione;i++)
-		printf("%d ",v[i]);
-}
-
+#include<stdio.h>
+#include<float.h>
+ 
 int main(){
+	int numeroConsulenti,i;
+	float fatturatoConsulente,fatturatoAzienda=0,spesaConsulente,spesaAzienda=0,maxFatturato=FLT_MIN,minSpesa=FLT_MAX,maxGuadagno=FLT_MIN,guadagnoConsulente,guadagnoAzienda=0;
 	
-	int numeri[LENGTH] ={12,3,4,1};
+	printf("Inserisci il numero di consulenti : ");
+	scanf("%d",&numeroConsulenti);
 	
-	printf("Array non ordinato\n");
-	stampaArray(numeri,LENGTH);	
+	for(i=0;i<numeroConsulenti;i++){
+		printf("\n"); printf("Inserisci il fatturato del consulente %d: ",i+1);
+		scanf("%f",&fatturatoConsulente);
+		if(fatturatoConsulente>maxFatturato)
+			maxFatturato=fatturatoConsulente;
+	fatturatoAzienda+=fatturatoConsulente;
 	
-	int i,j; //i 
-	for(i=0;i<LENGTH-1;i++)	
-	for(j=i+1;j<LENGTH;j++)
-		if(numeri[i]>numeri[j])
-			scambio(&numeri[i],&numeri[j]);
+		printf("\nInserisci le spese del consulente %d: ",i+1);
+		scanf("%f",&spesaConsulente);
+		if(spesaConsulente<minSpesa)
+			minSpesa=spesaConsulente;
+			;
+	spesaAzienda+=spesaConsulente;
+	
+	guadagnoConsulente=fatturatoConsulente-spesaConsulente;
+	if(guadagnoConsulente>maxGuadagno){
+		maxGuadagno=guadagnoConsulente;
+	}		
+	guadagnoAzienda+=guadagnoConsulente;
 		
-	printf("\n\nArray ordinato crescente\n");	
-	stampaArray(numeri,LENGTH);	
+		
+	}
+	printf("\nTra i consulenti:\nIl fatturato maggiore e' di %f.\nLa spesa minore e' di %f.\nIl guadagno maggiore e' di %f.",maxFatturato,minSpesa,maxGuadagno);
+	printf("\nIl fatturato dell azienda e' di %f.\nLa spesa dell azienda e' di : %f.\nIl guadagno dell azienda e' di :%f",fatturatoAzienda,spesaAzienda,guadagnoAzienda);
+
+	
+	
 }
+	//Comment from Damira
