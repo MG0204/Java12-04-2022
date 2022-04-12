@@ -10,7 +10,7 @@ int main(){
 	scanf("%d",&numeroConsulenti);
 	
 	for(i=0;i<numeroConsulenti;i++){
-		printf("\nInserisci il fatturato del consulente %d: ",i+1);
+		printf("\n"); printf("Inserisci il fatturato del consulente %d: ",i+1);
 		scanf("%f",&fatturatoConsulente);
 		if(fatturatoConsulente>maxFatturato)
 			maxFatturato=fatturatoConsulente;
